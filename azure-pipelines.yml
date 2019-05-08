@@ -22,9 +22,16 @@ steps:
     npx gatsby build
   displayName: 'gatsby build'
 
-- task: PublishBuildArtifacts@1
+- task: CopyFiles@2
   inputs:
     sourceFolder: 'public'
+    contents: '**' 
+    targetFolder: $(Build.ArtifactStagingDirectory)
+    cleanTargetFolder: true 
+displayName: 'copy built site'
+
+- task: PublishBuildArtifacts@1
+  inputs:    
     pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
     artifactName: 'drop' 
     publishLocation: 'Container'
