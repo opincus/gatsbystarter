@@ -15,12 +15,12 @@ steps:
 
 - script: |
     npm install -g gatsby-cli
-    displayName: 'install gatsby'
+  displayName: 'install gatsby'
 
 - script: |   
     npm install
     npx gatsby build
-    displayName: 'gatsby build'
+  displayName: 'gatsby build'
 
 - task: PublishBuildArtifacts@1
   inputs:
